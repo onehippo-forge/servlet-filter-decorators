@@ -36,7 +36,7 @@ public abstract class CmsDecoratorFilter extends ConfigurableDecoratorFilter {
         if (service != null) {
             final Session session = service.getSession();
             if (session == null) {
-                log.warn("IpFilterService has no session");
+                log.warn("ServletDecoratorService has no session");
                 return;
             }
             configLoader = new CmsDecoratorConfigurationLoader(session, service);
@@ -44,7 +44,7 @@ public abstract class CmsDecoratorFilter extends ConfigurableDecoratorFilter {
             initialized = true;
         } else {
             // info because always so on startup
-            log.info("IpFilterService not yet available in registry");
+            log.info("ServletDecoratorService not yet available in registry");
         }
     }
 
