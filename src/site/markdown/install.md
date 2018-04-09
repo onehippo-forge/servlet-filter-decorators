@@ -61,7 +61,7 @@ Add these dependencies to the `<dependencyManagement>` section of the root pom.x
 
 ### Installation in site application
 
-Add this dependency to the `<dependencies>` section of the site/pom.xml. It contains the site IP filter.
+Add this dependency to the `<dependencies>` section of the site/pom.xml. It contains the site decorator filter.
 
 ```
   <dependency>
