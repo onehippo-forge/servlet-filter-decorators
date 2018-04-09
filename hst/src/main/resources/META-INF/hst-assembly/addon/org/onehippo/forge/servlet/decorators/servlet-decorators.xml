@@ -19,7 +19,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
   <bean id="configurationLocation" class="java.lang.String">
-    <constructor-arg type="java.lang.String" value="/hippo:configuration/hippo:modules/servlet-decorators-module/hippo:moduleconfig"/>
+    <constructor-arg type="java.lang.String" value="/hippo:configuration/hippo:modules/servlet-filter-decorators-module/hippo:moduleconfig"/>
   </bean>
 
   <!-- add config loader -->

@@ -19,11 +19,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>org.onehippo.forge.servlet-decorators</groupId>
-    <artifactId>servlet-decorators</artifactId>
+    <groupId>org.onehippo.forge.servlet-filter-decorators</groupId>
+    <artifactId>servlet-filter-decorators</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
-  <artifactId>servlet-decorators-common</artifactId>
+  <artifactId>servlet-filter-decorators-common</artifactId>
   <packaging>jar</packaging>
   <name>Servlet decorators common</name>
   <description>Servlet decorators common</description>

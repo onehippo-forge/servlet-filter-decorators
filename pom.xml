@@ -23,8 +23,8 @@
     <artifactId>hippo-cms7-project</artifactId>
     <version>29.2</version>
   </parent>
-  <groupId>org.onehippo.forge.servlet-decorators</groupId>
-  <artifactId>servlet-decorators</artifactId>
+  <groupId>org.onehippo.forge.servlet-filter-decorators</groupId>
+  <artifactId>servlet-filter-decorators</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Servlet decorators module</name>
@@ -34,6 +34,7 @@
     <hippo.hst.version>5.0.2</hippo.hst.version>
     <hippo.repository.version>5.0.2</hippo.repository.version>
     <hippo.services.version>4.0.2</hippo.services.version>
+    <maven.plugin.site.version>3.6</maven.plugin.site.version>
     <slf4j.version>1.7.6</slf4j.version>
     <log4j.version>1.2.17</log4j.version>
   </properties>
@@ -124,9 +125,9 @@
 
 
   <scm>
-    <connection>scm:git:git@github.com:onehippo-forge/servlet-decorators.git</connection>
-    <developerConnection>scm:git:git@github.com:onehippo-forge/servlet-decorators.git</developerConnection>
-    <url>https://github.com/onehippo-forge/servlet-decorators.git</url>
+    <connection>scm:git:git@github.com:onehippo-forge/servlet-filter-decorators.git</connection>
+    <developerConnection>scm:git:git@github.com:onehippo-forge/servlet-filter-decorators.git</developerConnection>
+    <url>https://github.com/onehippo-forge/servlet-filter-decorators.git</url>
     <tag>HEAD</tag>
   </scm>
 
@@ -162,6 +163,17 @@
       <layout>default</layout>
     </repository>
   </repositories>
+  <build>
+    <defaultGoal>package</defaultGoal>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>${maven.plugin.site.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+
   <profiles>
     <profile>
       <!-- For generating/publishing GitHub Site Pages into /docs/ folder on master branch only -->

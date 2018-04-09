@@ -1,5 +1,5 @@
 group: hippo-cms
 project:
-    name: servlet-decorators-module
+    name: servlet-filter-decorators-module
     after: hippo-cms
-module: servlet-decorators-module-cms
+module: servlet-filter-decorators-module-cms

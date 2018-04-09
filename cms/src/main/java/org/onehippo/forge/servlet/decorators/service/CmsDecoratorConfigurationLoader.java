@@ -22,7 +22,7 @@ import javax.jcr.Session;
 
 public class CmsDecoratorConfigurationLoader extends DecoratorConfigurationLoader {
 
-    private static final String DEFAULT_CONFIGURATION_PATH = "/hippo:configuration/hippo:modules/servlet-decorators-module/hippo:moduleconfig";
+    private static final String DEFAULT_CONFIGURATION_PATH = "/hippo:configuration/hippo:modules/servlet-filter-decorators-module/hippo:moduleconfig";
 
     
     private final Session session;
