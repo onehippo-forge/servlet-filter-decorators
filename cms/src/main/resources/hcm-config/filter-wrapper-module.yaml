@@ -1,0 +1,14 @@
+definitions:
+  config:
+    /hippo:configuration/hippo:modules/servlet-decorators-module:
+      jcr:primaryType: hipposys:module
+      hipposys:className: org.onehippo.forge.servlet.decorators.service.ServletDecoratorModule
+      hipposys:cmsonly: false
+      /hippo:moduleconfig:
+        jcr:primaryType: hipposys:moduleconfig
+        /localhost:
+          jcr:primaryType: hipposys:moduleconfig
+          enabled: true
+          hostheader: X-Forwarded-Host
+          hostnames: [localhost, 127.0.0.1, .*onehippo\.com, .*onehippo\.org]
+          contextpaths: [/site, /site, /, /]
