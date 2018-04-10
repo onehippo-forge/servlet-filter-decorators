@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/onehippo-forge/servlet-filter-decorators.svg?branch=develop)](https://travis-ci.org/onehippo-forge/servlet-filter-decorators)
 
-# Hippo Servlet Decorators Plugin
+# Hippo Servlet Filter Decorators Plugin
 
 Decorate ServletRequest 
 
