@@ -13,7 +13,7 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   -->
-## Installation of the Servlet Decorators  plugin
+## Installation of the Servlet Filter Decorators  plugin
 
 These instructions assume a Hippo CMS project based on the Hippo website archetype, i.e. a Maven multi-module project 
 with parent pom `org.onehippo.cms7:hippo-cms7-release` and consisting of at least three sub-modules: cms, site and bootstrap.
