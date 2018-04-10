@@ -27,8 +27,8 @@
   <artifactId>servlet-filter-decorators</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>Servlet decorators module</name>
-  <description>Servlet decorators module</description>
+  <name>Servlet filter decorators module</name>
+  <description>Servlet filter decorators module</description>
   <properties>
     <hippo.cms.version>5.0.2</hippo.cms.version>
     <hippo.hst.version>5.0.2</hippo.hst.version>

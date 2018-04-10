@@ -25,8 +25,8 @@
   </parent>
   <artifactId>servlet-filter-decorators-common</artifactId>
   <packaging>jar</packaging>
-  <name>Servlet decorators common</name>
-  <description>Servlet decorators common</description>
+  <name>Servlet filter decorators common</name>
+  <description>Servlet filter decorators common</description>
   <dependencies>
     <dependency>
       <groupId>org.onehippo.cms7</groupId>
