@@ -5,7 +5,7 @@
 
 ## Code on GitHub
 
-The open source code is on GitHub at [github.com/onehippo-forge/servlet-filter-decorators](https://github.com/onehippo-forge/servlet-filter-decorators)  
+The open source code is on GitHub at [github.com/bloomreach-forge/servlet-filter-decorators](https://github.com/bloomreach-forge/servlet-filter-decorators)  
 
 ## Contents
 - [Installation instructions](install.html)
