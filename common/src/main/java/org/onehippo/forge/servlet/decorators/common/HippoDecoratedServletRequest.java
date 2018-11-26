@@ -26,6 +26,10 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
 
     private static final Logger log = LoggerFactory.getLogger(HippoDecoratedServletRequest.class);
     private final DecoratorConfiguration config;
+    /**
+     * Flag we can set in case we cannot unwrap our decorator e.g. when it is deeply decorated by Spring security wrappers
+     */
+    private boolean serveOriginal;
 
     public HippoDecoratedServletRequest(HttpServletRequest request, final DecoratorConfiguration config) {
         super(request);
@@ -34,11 +38,16 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
 
     @Override
     public String getContextPath() {
-        if (config.disabled() || config.invalid()) {
+        if (serveOriginal || config.disabled() || config.invalid()) {
+            log.debug("Serving original context path");
             return super.getContextPath();
         }
         final String contextPath = config.getContextPath();
         log.debug("Using decorated context path: {}", contextPath);
         return contextPath;
+    }
+
+    public void setServeOriginal(final boolean serveOriginal) {
+        this.serveOriginal = serveOriginal;
     }
 }
