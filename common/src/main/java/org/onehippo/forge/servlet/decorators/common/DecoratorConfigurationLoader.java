@@ -134,7 +134,7 @@ public abstract class DecoratorConfigurationLoader {
                 .boxed()
                 .collect(Collectors.toMap(i -> hosts[i], i -> contextPaths[i]));
 
-        final String header = JcrUtils.getStringProperty(node, DecoratorConst.CONFIG_HEADER_HOST, DecoratorConst.HEADER_X_FORWARDED_HOST);
+        final String header = JcrUtils.getStringProperty(node, DecoratorConst.HEADER_X_FORWARDED_HOST, DecoratorConst.HEADER_X_FORWARDED_HOST);
         final Set<DecoratorConfiguration> configs = DecoratorConfiguration.
                 Builder
                 .start()
