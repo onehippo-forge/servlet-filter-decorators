@@ -33,9 +33,30 @@ public abstract class CommonUndecorateFilter implements Filter {
             final HippoDecoratedServletRequest decoratedServletRequest = (HippoDecoratedServletRequest) request;
             final ServletRequest originalRequest = decoratedServletRequest.getRequest();
             chain.doFilter(originalRequest, response);
+        } else if (request instanceof ServletRequestWrapper) {
+            // wrapped into someone else wrapper e.g spring security wraps request three levels deep:
+            unwrapDeep(request, (ServletRequestWrapper)request, response, chain);
         } else {
             chain.doFilter(request, response);
         }
+    }
+
+    private  void unwrapDeep(final ServletRequest original, final ServletRequestWrapper request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
+        if (request instanceof HippoDecoratedServletRequest) {
+            final HippoDecoratedServletRequest decoratedServletRequest = (HippoDecoratedServletRequest) request;
+            // reset our request
+            log.debug("Un-decorating request: resetting original");
+            decoratedServletRequest.setServeOriginal(true);
+            chain.doFilter(original, response);
+            return;
+        }
+        final ServletRequest wrappedRequest = request.getRequest();
+        if (wrappedRequest instanceof ServletRequestWrapper) {
+            unwrapDeep(original, (ServletRequestWrapper) wrappedRequest, response, chain);
+            return;
+        }
+        chain.doFilter(original, response);
+
     }
 
 
