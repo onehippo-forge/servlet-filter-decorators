@@ -37,19 +37,8 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
     }
 
     @Override
-    public String getRequestURI() {
-        final String uri = super.getRequestURI();
-        if (isDisabled()) {
-            log.debug("Serving original getRequestURI");
-            return uri;
-        }
-        return stripOldContext(uri);
-    }
-
-
-    @Override
     public String getContextPath() {
-        if (isDisabled()) {
+        if (serveOriginal || config.disabled() || config.invalid()) {
             log.debug("Serving original context path");
             return super.getContextPath();
         }
@@ -61,24 +50,4 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
     public void setServeOriginal(final boolean serveOriginal) {
         this.serveOriginal = serveOriginal;
     }
-
-    private boolean isDisabled() {
-        return serveOriginal || config.disabled() || config.invalid();
-    }
-
-
-    private String stripOldContext(final String uri) {
-        if (uri == null) {
-            return null;
-        }
-        final String oldContext = super.getContextPath();
-        final int length = oldContext.length();
-        if (length > 1 && uri.startsWith(oldContext)) {
-            return uri.substring(length);
-        }
-        return uri;
-    }
-
-
 }
-
