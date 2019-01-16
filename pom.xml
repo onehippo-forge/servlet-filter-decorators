@@ -24,7 +24,7 @@
   </parent>
   <groupId>org.onehippo.forge.servlet-filter-decorators</groupId>
   <artifactId>servlet-filter-decorators</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <packaging>pom</packaging>
   <name>Servlet filter decorators module</name>
   <description>Servlet filter decorators module</description>
@@ -127,7 +127,7 @@
     <connection>scm:git:git@github.com:bloomreach-forge/servlet-filter-decorators.git</connection>
     <developerConnection>scm:git:git@github.com:bloomreach-forge/servlet-filter-decorators.git</developerConnection>
     <url>https://github.com/bloomreach-forge/servlet-filter-decorators.git</url>
-    <tag>HEAD</tag>
+    <tag>servlet-filter-decorators-1.0.2</tag>
   </scm>
 
   <distributionManagement>
