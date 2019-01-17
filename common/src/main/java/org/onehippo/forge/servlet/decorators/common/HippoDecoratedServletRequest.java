@@ -22,6 +22,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
+import com.google.common.base.Strings;
+
 public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
 
     private static final Logger log = LoggerFactory.getLogger(HippoDecoratedServletRequest.class);
@@ -43,7 +45,20 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
             log.debug("Serving original getRequestURI");
             return uri;
         }
-        return stripOldContext(uri);
+        if (uri == null) {
+            return null;
+        }
+
+        final String newContextPath = config.getContextPath();
+        final String oldContextPath = super.getContextPath();
+        if (oldContextPath.equals(newContextPath)) {
+            return uri;
+        }
+        final String stripped = stripOldContext(uri);
+        if (Strings.isNullOrEmpty(newContextPath) || (newContextPath.equals("/") && stripped.startsWith("/"))) {
+            return stripped;
+        }
+        return newContextPath + stripped;
     }
 
 
