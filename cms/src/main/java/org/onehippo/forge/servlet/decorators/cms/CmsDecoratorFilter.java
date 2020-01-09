@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.jcr.Session;
 
-public abstract class CmsDecoratorFilter extends ConfigurableDecoratorFilter {
+public class CmsDecoratorFilter extends ConfigurableDecoratorFilter {
 
     private static final Logger log = LoggerFactory.getLogger(CmsDecoratorFilter.class);
     
