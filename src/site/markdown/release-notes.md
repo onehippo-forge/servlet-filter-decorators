@@ -1,5 +1,5 @@
 <!--
-  Copyright 2018-2019 Hippo B.V. (http://www.onehippo.com)
+  Copyright 2018-2020 Hippo B.V. (http://www.onehippo.com)
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
@@ -15,6 +15,16 @@
   -->
 
 ## Version Compatibility
+
+
+### 1.0.4 
++ 
+
+### 1.0.3 
++ bug fixes
+
+### 1.0.2 
++ bug fixes
 
 ### 1.0.1 
 + Unwrap Spring wrappers
