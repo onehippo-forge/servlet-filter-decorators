@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Hippo B.V. (http://www.onehippo.com)
+ * Copyright 2018-2019 Hippo B.V. (http://www.onehippo.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,8 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
+import com.google.common.base.Strings;
+
 public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
 
     private static final Logger log = LoggerFactory.getLogger(HippoDecoratedServletRequest.class);
@@ -37,8 +39,32 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
     }
 
     @Override
+    public String getRequestURI() {
+        final String uri = super.getRequestURI();
+        if (isDisabled()) {
+            log.debug("Serving original getRequestURI");
+            return uri;
+        }
+        if (uri == null) {
+            return null;
+        }
+
+        final String newContextPath = config.getContextPath();
+        final String oldContextPath = super.getContextPath();
+        if (oldContextPath.equals(newContextPath)) {
+            return uri;
+        }
+        final String stripped = stripOldContext(uri);
+        if (Strings.isNullOrEmpty(newContextPath) || (newContextPath.equals("/") && stripped.startsWith("/"))) {
+            return stripped;
+        }
+        return newContextPath + stripped;
+    }
+
+
+    @Override
     public String getContextPath() {
-        if (serveOriginal || config.disabled() || config.invalid()) {
+        if (isDisabled()) {
             log.debug("Serving original context path");
             return super.getContextPath();
         }
@@ -50,4 +76,25 @@ public class HippoDecoratedServletRequest extends HttpServletRequestWrapper {
     public void setServeOriginal(final boolean serveOriginal) {
         this.serveOriginal = serveOriginal;
     }
+
+    private boolean isDisabled() {
+        return serveOriginal || config.disabled() || config.invalid();
+    }
+
+
+    private String stripOldContext(final String uri) {
+        if (uri == null) {
+            return null;
+        }
+        final String oldContext = super.getContextPath();
+        final int length = oldContext.length();
+        if (length > 1 && uri.startsWith(oldContext)) {
+            return uri.substring(length);
+        }
+        return uri;
+    }
+
+
 }
+
+
